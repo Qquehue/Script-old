@@ -1,10 +1,7 @@
 #!/bin/bash
-
-#Se necessario, altere o nome do arquivo .pem entre "" nesse comando, para estabelecer uma conexao via ssh
-ssh -i "so2adsb-alejandro.pem" ubuntu@ec2-18-213-118-231.compute-1.amazonaws.com
-#---------------------------------------------------------------------------------------------------------
 #Iniciando a configuracao padrao
 echo "Gostaria de cdefinir uma senha novar para usurario ubuntu? (recomendado caso não tenha feito anteriormente) - s/n"
+read inst
 if [ \"$inst\" == \"s\" ];
 then
 echo "Criando senha de usuario Ubuntu..."
@@ -40,7 +37,7 @@ fi
 
 git clone https://github.com/Qquehue/arquivos-sh.git
 #////////////////////////////DOCKER//////////////////////////////////
-docker -version
+docker --version
 if [ $? -eq 0 ];
 then
 echo "docker instalado"
@@ -56,6 +53,8 @@ sudo docker pull mysql:5.7
 sudo docker images
 sudo docker run -d -p 3306:3306 --name ContainerBD -e "MYSQL_DATABASE=ctc" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
 sudo docker exec -it ContainerBD bash
+
+USE ctc;
 
 CREATE TABLE Linha ( idLinha INT PRIMARY KEY AUTO_INCREMENT,nomeLinha VARCHAR(45),situacaoLinha CHAR(10));
 
@@ -86,6 +85,8 @@ sudo docker pull mysql:5.7
 sudo docker images
 sudo docker run -d -p 3306:3306 --name ContainerBD -e "MYSQL_DATABASE=ctc" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
 sudo docker exec -it ContainerBD bash
+
+USE ctc;
 
 CREATE TABLE Linha ( idLinha INT PRIMARY KEY AUTO_INCREMENT,nomeLinha VARCHAR(45),situacaoLinha CHAR(10));
 
