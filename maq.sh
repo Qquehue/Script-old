@@ -79,12 +79,11 @@ sudo apt install docker.io
 
 sudo systemctl start Docker
 sudo systemctl enable Docker
-sudo systemctl -t service
-docker -version
-sudo docker pull mysql:5.7
-sudo docker images
-sudo docker run -d -p 3306:3306 --name ContainerBD -e "MYSQL_DATABASE=ctc" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
-sudo docker exec -it ContainerBD bash
+
+cd ~/Instalador-primario-CTC/bd-mysql
+sudo docker-compose up -d
+
+sudo docker exec -it $(sudo docker ps -aqf "name=ContainerBD") mysql -u root -p -B -N -e "
 
 USE ctc;
 
@@ -99,7 +98,7 @@ CREATE TABLE UsoMaquina(idUso INT PRIMARY KEY AUTO_INCREMENT,temperaturaCPU DOUB
 CREATE TABLE Cargo(idCargo INT PRIMARY KEY AUTO_INCREMENT,nomeCargo VARCHAR(45));
 
 CREATE TABLE Funcionario(idFuncionario INT PRIMARY KEY AUTO_INCREMENT,nomeFuncionario VARCHAR(45),CPF CHAR(11),telefone CHAR(15),email VARCHAR(45),senha VARCHAR(45),fkLinha INT,FOREIGN KEY (fkLinha) REFERENCES Linha(idLinha),fkCargo INT,FOREIGN KEY (fkCargo) REFERENCES Cargo(idCargo));
-
+"
 exit
 exit
 fi
