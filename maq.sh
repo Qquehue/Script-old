@@ -68,15 +68,15 @@ fi
 else
 echo "docker nao instalado"
 echo "instalando docker..."
-sudo apt install docker.io
 
-sudo systemctl start Docker
-sudo systemctl enable Docker
+sudo apt install docker.io -y
+  sudo systemctl start docker
+  sudo systemctl enable docker
+  sudo docker pull mysql:5.7
+  sudo docker run -d -p 3306:3306 --name ctc -e "MYSQL_DATABASE=ctc" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
+  docker exec -it ctc bash mysql -u root -p -B -N -e"
 
-cd ~/Instalador-CTC/bd-mysql
-sudo docker-compose up -d 
-
-sudo docker exec -it $(sudo docker ps -aqf "name=ContainerBD") mysql -u root -p -B -N -e "
+CREATE DATABASE ctc;
 
 USE ctc;
 
