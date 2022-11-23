@@ -1,19 +1,8 @@
 #!/bin/bash
-#Iniciando a configuracao padrao
-echo "Gostaria de cdefinir uma senha novar para usurario ubuntu? (recomendado caso não tenha feito anteriormente) - s/n"
-read inst
-if [ \"$inst\" == \"s\" ];
-then
-echo "Criando senha de usuario Ubuntu..."
-sleep 2
-echo "Digite sua senha:"
-sudo passwd ubuntu
-fi
 sudo su
 echo "Vamos atualizar sua maquina, se aparecer uma tela roxa selecione os espacos utilizando as setas para direcionamento e espaco para marcar (selecione todos os campos), aperte enter para confirmar)"
-sleep 3
-sudo apt update && apt upgrade -y
-sudo apt-get install xrdp lxde-core lxde tigervnc-standalone-server -y
+apt update && apt upgrade -y
+apt-get install xrdp lxde-core lxde tigervnc-standalone-server -y
 #//////////////////////////JAVA/////////////////////////////////////
 VERSION="$(java -version 2>&1 | grep version | cut -d'"' -f2)"
 if [ "${VERSION}" ];
@@ -27,26 +16,19 @@ echo "gostaria de instalar o java? (s/n)"
 read inst
 if [ \"$inst\" == \"s\" ];
 then
-sudo apt install default-jre -y
+apt install default-jre -y
 fi
 fi
 
 git clone https://github.com/Qquehue/arquivos-sh.git
 #////////////////////////////DOCKER//////////////////////////////////
-docker --version
-if [ $? -eq 0 ];
-then
-echo "docker instalado"
-fi
-else
-echo "docker nao instalado"
 echo "instalando docker..."
 
-sudo apt install docker.io -y
-  sudo systemctl start docker
-  sudo systemctl enable docker
-  sudo docker pull mysql:5.7
-  sudo docker run -d -p 3306:3306 --name ctc -e "MYSQL_DATABASE=ctc" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
+apt install docker.io -y
+  systemctl start docker
+  systemctl enable docker
+  docker pull mysql:5.7
+  docker run -d -p 3306:3306 --name ctc -e "MYSQL_DATABASE=ctc" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
   docker exec -it ctc bash mysql -u root -p -B -N -e"
 
 CREATE DATABASE ctc;
