@@ -19,7 +19,7 @@ sudo apt install default-jre -y
 fi
 fi
 
-git clone https://github.com/Qquehue/CTC-Script.git
+git clone https://github.com/Qquehue/arquivos-sh.git
 #////////////////////////////DOCKER//////////////////////////////////
 echo "instalando docker..."
 
