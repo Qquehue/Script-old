@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Vamos atualizar sua maquina, se aparecer uma tela roxa selecione os espacos utilizando as setas para direcionamento e espaco para marcar (selecione todos os campos), aperte enter para confirmar)"
-sudo apt update && apt upgrade -y
+sudo apt update && sudo apt upgrade -y
 sudo apt-get install xrdp lxde-core lxde tigervnc-standalone-server -y
 #//////////////////////////JAVA/////////////////////////////////////
 VERSION="$(java -version 2>&1 | grep version | cut -d'"' -f2)"
@@ -26,9 +26,9 @@ echo "instalando docker..."
 sudo apt install docker.io -y
   sudo systemctl start docker
   sudo systemctl enable docker
-  sudo docker pull mysql:5.7
-  sudo docker run -d -p 3306:3306 --name ctc -e "MYSQL_DATABASE=ctc" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
-  sudo docker exec -it ctc bash mysql -u root -p -B -N -e"
+  docker pull mysql:5.7
+  docker run -d -p 3306:3306 --name ctc -e "MYSQL_DATABASE=ctc" -e "MYSQL_ROOT_PASSWORD=urubu100" mysql:5.7
+  docker exec -it ctc bash mysql -u root -p -B -N -e"
 
 CREATE DATABASE ctc;
 
