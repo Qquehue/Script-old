@@ -29,8 +29,8 @@ sudo apt install docker.io -y
 
 docker build -t dockerfile .
 docker run -d -p 3306:3306 --name ctc -e MYSQL_ROOT_PASSWORD=urubu100 -e MYSQL_DATABASE=ctc dockerfile
+exit
 
-fi
 cd arquivos-sh
 sudo chmod 777 tJava.sh
 sudo chmod 777 tNode.sh
