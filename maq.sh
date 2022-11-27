@@ -34,7 +34,7 @@ docker run -d -p 3306:3306 --name ctc -e MYSQL_ROOT_PASSWORD=urubu100 -e MYSQL_D
 echo "Voce esta aqui:"
 pwd
 guiJava(){
-  cd /home/arquivos-sh
+  cd /home/ubuntu/arquivos-sh
   sudo chmod 777 guiJava.sh
   bash guiJava.sh
 }
@@ -63,7 +63,7 @@ echo "Voce esta aqui:"
 pwd
 sleep 2
 cliJava(){
-  cd /home/arquivos-sh
+  cd /home/ubuntu/arquivos-sh
   sudo chmod 777 cliJava.sh
   bash cliJava.sh
 }
