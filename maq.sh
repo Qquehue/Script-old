@@ -1,4 +1,11 @@
 #!/bin/bash
+echo "deseja alterar a senha do usuario root? (s/n)"
+read inst
+if [ \"$inst\" == \"s\" ];
+then
+sudo passwd
+fi
+
 echo "Vamos atualizar sua maquina, se aparecer uma tela roxa selecione os espacos utilizando as setas para direcionamento e espaco para marcar (selecione todos os campos), aperte enter para confirmar)"
 sleep 5
 
@@ -23,7 +30,7 @@ echo "Cliente nao possui java instalado"
 sleep 2
 echo "Instalando o Java..."
 sleep 2
-sudo apt-get install openjdk-8-jre 
+sudo apt-get install openjdk-11-jre
 echo "instalando docker..."
 sleep 2
 sudo apt install docker.io -y
@@ -38,7 +45,7 @@ guiJava(){
   sudo chmod 777 guiJava.sh
   bash guiJava.sh
 }
-echo "Conecte via RDP, abra o terminal e digite: guiJava"
+echo "Faça uma conexão com interface gráfica, abra o terminal e digite: guiJava"
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 fi
 else
@@ -62,10 +69,11 @@ cd arquivos-sh
 echo "Voce esta aqui:"
 pwd
 sleep 2
-cliJava(){
+
+alias cliJava="cd /home/ubuntu/arquivos-sh ; bash cliJava.sh"
+
   cd /home/ubuntu/arquivos-sh
   sudo chmod 777 cliJava.sh
-  bash cliJava.sh
-}
+
 echo "Digite o seguinte comando para inciar a aplicacao: cliJava"
 fi
