@@ -3,7 +3,7 @@ echo "deseja alterar a senha do usuario root? (s/n)"
 read inst
 if [ \"$inst\" == \"s\" ];
 then
-sudo passwd
+sudo passwd ubuntu
 fi
 
 echo "Vamos atualizar sua maquina, se aparecer uma tela roxa selecione os espacos utilizando as setas para direcionamento e espaco para marcar (selecione todos os campos), aperte enter para confirmar)"
@@ -36,8 +36,11 @@ sleep 2
 sudo apt install docker.io -y
   sudo systemctl start docker
   sudo systemctl enable docker
+
 docker build -t dockerfile .
+
 docker run -d -p 3306:3306 --name ctc -e MYSQL_ROOT_PASSWORD=urubu100 -e MYSQL_DATABASE=ctc dockerfile
+
 echo "Voce esta aqui:"
 pwd
 guiJava(){

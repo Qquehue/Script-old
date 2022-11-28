@@ -6,4 +6,5 @@ CREATE TABLE UsoMaquina(
     usoCPU DOUBLE,
     usoMemoria DOUBLE,
     upTime DATETIME,
+    fkMaquina INT
     );
