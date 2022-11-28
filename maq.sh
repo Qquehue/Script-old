@@ -30,7 +30,7 @@ echo "Cliente nao possui java instalado"
 sleep 2
 echo "Instalando o Java..."
 sleep 2
-sudo apt-get install openjdk-11-jre
+sudo apt install default-jre ; apt install openjdk-11-jre-headless; -y
 echo "instalando docker..."
 sleep 2
 sudo apt install docker.io -y
