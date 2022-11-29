@@ -30,7 +30,7 @@ echo "Cliente nao possui java instalado"
 sleep 2
 echo "Instalando o Java..."
 sleep 2
-sudo apt install default-jre ; apt install openjdk-11-jre-headless; -y
+sudo apt install default-jdk -y
 echo "instalando docker..."
 sleep 2
 sudo apt install docker.io -y
@@ -39,7 +39,7 @@ sudo apt install docker.io -y
 
 docker build -t dockerfile .
 
-docker run -d -p 3306:3306 --name ctc -e MYSQL_ROOT_PASSWORD=urubu100 -e MYSQL_DATABASE=ctc dockerfile
+docker run -d -p 3306:3306 --name ctcBD -e MYSQL_ROOT_PASSWORD=urubu100 -e MYSQL_DATABASE=ctc dockerfile
 
 echo "Voce esta aqui:"
 pwd
@@ -63,7 +63,7 @@ sudo apt install docker.io -y
   sudo systemctl enable docker
 
 docker build -t dockerfile .
-docker run -d -p 3306:3306 --name ctc -e MYSQL_ROOT_PASSWORD=urubu100 -e MYSQL_DATABASE=ctc dockerfile
+docker run -d -p 3306:3306 --name ctcBD -e MYSQL_ROOT_PASSWORD=urubu100 -e MYSQL_DATABASE=ctc dockerfile
 
 echo "Banco ctc criado"
 sleep 2
